@@ -44,8 +44,7 @@ def transaction():
     for receivingthe incoming transactions
     """
     card = request.get_json()
-    new_limit = card.get("limit")
-    card.get("transaction").get("amount")
+    new_limit = card.get("limit") - card.get("transaction").get("amount")
     response = {"approved": True,
                 "newLimit": new_limit}
     return jsonify(response)
