@@ -4,7 +4,7 @@ import tempfile
 
 import pytest
 
-from app import app
+from app import APP
 
 @pytest.fixture
 
