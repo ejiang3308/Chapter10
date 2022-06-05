@@ -20,7 +20,7 @@ def test_valid_transaction(client):
         "number":123456,
         "limit":1000,
         "transaction":{
-            "amount":500
+        "amount":500
             }
         }
     rv = client.post("/api/transaction",json=card)
@@ -34,7 +34,7 @@ def test_above_limit(client):
         "number":123456,
         "limit":1000,
         "transaction":{
-            "amount":1500
+        "amount":1500
             }
         }
         
@@ -49,7 +49,7 @@ def test_blocked_card(client):
         "number":123456,
         "limit":1000,
         "transaction":{
-            "amount":500
+        "amount":500
             }
         }
     rv = client.post("/api/transaction",json=card)
