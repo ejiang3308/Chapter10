@@ -36,7 +36,7 @@ def check_card(func):
     return validation
 
 
-@APP.route("/api/transactioni", methods=["POST"])
+@APP.route("/api/transaction", methods=["POST"])
 @check_card
 def transaction():
     """
