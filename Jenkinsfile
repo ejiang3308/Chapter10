@@ -9,7 +9,6 @@ pipeline {
         stage('Code Quality') {
             steps {
                 sh 'python3 -m pylint app.py'
-
             }
         }
         stage('Tests') {
@@ -18,18 +17,25 @@ pipeline {
                 }
             }
         stage('Build') {
-            steps {
-                sh 'exit 1'
+            agent {
+                node{
+                    label "DockerServer";
+                    }
                 }
-            }
-        stage('Delivery') {
             steps {
-                sh 'exit 1'
+                sh 'docker build 
+                https://github.com/ejiang3308/Chapter10.git -t
+                chapter10:latest'
                 }
             }
         stage('Deploy') {
+            agent {
+                node{
+                    label "DockerServer";
+                    }
+                }            
             steps {
-                sh 'exit 1'
+                sh 'docker run -tdi -p 5000:5000 chapter10:latest'
                 }
             }
         }
