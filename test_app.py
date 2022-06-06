@@ -25,7 +25,7 @@ def test_valid_transaction(client):
         }
     rv = client.post("/api/transaction",json=card)
     
-    assert True == rv.get_json().get("approved")
+    assert None == rv.get_json().get("approved")
     assert 500 == rv.get_json().get("newLimit")
     
 def test_above_limit(client):
